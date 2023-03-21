@@ -1,0 +1,27 @@
+.board-btn {
+  display: block;
+  position: relative;
+  padding-left: 32px;
+  padding-right: 0;
+  font-size: var(--fz-lg);
+  color: var(--white);
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  .board-btn {
+    font-size: var(--fz-md);
+  }
+}
+.board-btn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  background-image: url('../../images/plus.svg');
+  background-repeat: no-repeat;
+}

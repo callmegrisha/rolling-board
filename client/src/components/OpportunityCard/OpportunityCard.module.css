@@ -1,0 +1,66 @@
+.opportunity {
+  position: relative;
+  padding: 127px 20px 60px;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(#101113),
+    to(rgba(16, 17, 19, 0))
+  );
+  background: -o-linear-gradient(top, #101113 0%, rgba(16, 17, 19, 0) 100%);
+  background: linear-gradient(180deg, #101113 0%, rgba(16, 17, 19, 0) 100%);
+  border-radius: calc(var(--radius) + 9px);
+  text-align: center;
+  min-height: 298px;
+}
+@media (max-width: 768px) {
+  .opportunity {
+    padding: 97px 15px 30px;
+    min-height: 260px;
+  }
+}
+.opportunity::before {
+  content: '';
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+@media (max-width: 768px) {
+  .opportunity::before {
+    top: 30px;
+  }
+}
+.opportunity__title {
+  display: block;
+  font-weight: 600;
+  font-size: var(--fz-lg);
+  line-height: var(--lh-main);
+  color: var(--white);
+  margin-bottom: 8px;
+}
+@media (max-width: 768px) {
+  .opportunity__title {
+    font-size: var(--fz-sm);
+  }
+}
+.opportunity__description {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.opportunity--integrate::before {
+  background-image: url('../../images/opportunity-1.svg');
+}
+.opportunity--colaborate::before {
+  background-image: url('../../images/opportunity-2.svg');
+}
+.opportunity--succeed::before {
+  background-image: url('../../images/opportunity-3.svg');
+}

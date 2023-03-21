@@ -1,0 +1,6 @@
+.notify span {
+  margin-top: 10px;
+  font-size: var(--fz-xs);
+  line-height: 1;
+  color: var(--pink-8);
+}

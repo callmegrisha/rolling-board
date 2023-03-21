@@ -1,0 +1,10 @@
+.label {
+  display: block;
+}
+.label span {
+  display: block;
+  font-weight: 600;
+  font-size: var(--fz-sm);
+  color: var(--gray-6);
+  margin-bottom: 4px;
+}

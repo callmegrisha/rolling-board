@@ -1,0 +1,68 @@
+.user-sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  max-width: 480px;
+  background-color: var(--dark-9);
+  overflow-y: scroll;
+  z-index: 100;
+  border-radius: 17px 0px 0px 17px;
+  animation: openSidebar;
+  animation-duration: 0.2s;
+}
+
+.user-sidebar__header {
+  height: 142px;
+  background: #0f2027; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2c5364,
+    #203a43,
+    #0f2027
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.user-sidebar__inner {
+  padding: 9px 36px 36px;
+}
+.user-sidebar__profile {
+  margin-top: -40px;
+  margin-bottom: 40px;
+}
+.user-sidebar__title {
+  display: block;
+  font-weight: 700;
+  font-size: var(--fz-lg);
+  text-align: center;
+  text-transform: capitalize;
+}
+.user-sidebar__title,
+.user-sidebar__search,
+.user-sidebar__item {
+  margin-bottom: 16px;
+}
+.user-sidebar__msg {
+  display: block;
+  text-align: center;
+  font-size: var(--fz-sm);
+  color: var(--dark-2);
+}
+
+@keyframes openSidebar {
+  0% {
+    opacity: 0;
+    transform: translateX(300px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

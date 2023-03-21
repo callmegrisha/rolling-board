@@ -1,0 +1,23 @@
+.form {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.form__sign {
+  margin-top: 0;
+  margin-bottom: 27px;
+}
+.form__sign a {
+  color: var(--dark-0);
+}
+.form__item {
+  margin-bottom: 20px;
+}
+.form__btn {
+  display: block;
+  margin: 0 auto;
+}
+.form__nav.nav-btn {
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}

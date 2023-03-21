@@ -1,0 +1,15 @@
+.form-wrap {
+  width: 100%;
+  max-width: 460px;
+  padding: 40px;
+  background-color: var(--dark-9);
+  border: 1px solid var(--gray-8);
+  border-radius: calc(var(--radius) + 9px);
+}
+.form-wrap__title {
+  display: block;
+  font-size: var(--fz-xl);
+  color: var(--white);
+  margin-top: 0;
+  margin-bottom: 20px;
+}

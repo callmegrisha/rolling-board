@@ -1,0 +1,53 @@
+.board {
+  padding: 65px 0;
+  animation: pageTransition;
+  animation-duration: 0.4s;
+  animation-timing-function: ease-in-out;
+}
+.board__title {
+  cursor: pointer;
+}
+@media (max-width: 768px) {
+  .board {
+    padding: 40px 0;
+  }
+}
+.board__info {
+  margin-bottom: 40px;
+}
+@media (max-width: 768px) {
+  .board__info {
+    margin-bottom: 20px;
+  }
+}
+.board__title {
+  margin-top: 0;
+  margin-bottom: 12px;
+  padding-left: 24px;
+  position: relative;
+}
+.board__title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 8px;
+  height: 16px;
+  background-image: url('../../images/chevron-left.svg');
+  background-repeat: no-repeat;
+}
+.board__description {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+@keyframes pageTransition {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

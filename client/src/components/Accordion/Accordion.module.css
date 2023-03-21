@@ -1,0 +1,50 @@
+.accordion__header {
+  position: relative;
+  width: 100%;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: var(--fz-sm);
+  line-height: var(--lh-main);
+  color: var(--gray-5);
+  padding: 0;
+  text-align: left;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+.accordion__header::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-image: url('../../images/chevron-down.svg');
+  background-repeat: no-repeat;
+}
+.accordion__item {
+  margin-bottom: 8px;
+}
+.accordion__item:last-child {
+  margin-bottom: 0;
+}
+.accordion.accordion--active .accordion__item {
+  animation: openAccordionItem;
+  animation-duration: 0.3s;
+}
+.accordion.accordion--active .accordion__header::after {
+  transform: translateY(-50%) rotateX(180deg);
+}
+
+@keyframes openAccordionItem {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

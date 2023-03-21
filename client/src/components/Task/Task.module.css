@@ -1,0 +1,56 @@
+.task {
+  position: relative;
+  border-radius: 6px;
+  padding: 8px 16px;
+  width: 100%;
+  background-color: var(--dark-6);
+  cursor: pointer;
+}
+.task span {
+  display: block;
+}
+.task__title {
+  font-weight: 600;
+  color: var(--white);
+}
+.task__description {
+  font-size: var(--fz-sm);
+  line-height: var(--lh-h1);
+  color: var(--gray-6);
+}
+.task__delete {
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+.task--board {
+  border: 1px solid rgba(0, 0, 0, 0);
+  padding: 11px 20px;
+  -webkit-transition: border 0.3s ease-in-out;
+  -o-transition: border 0.3s ease-in-out;
+  transition: border 0.3s ease-in-out;
+}
+
+.task--board .task__content {
+  padding-right: 24px;
+}
+.task--board:hover {
+  border: 1px solid var(--dark-2);
+}
+.task--board:hover .task__delete {
+  opacity: 1;
+  visibility: visible;
+}
