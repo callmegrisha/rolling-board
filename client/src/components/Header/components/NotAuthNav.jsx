@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from '../Header.module.css';
 
-export const NotAuthNav = () => {
+const NotAuthNav = () => {
   return (
     <>
       <nav className={`${styles.header__nav}`}>
@@ -28,3 +28,5 @@ export const NotAuthNav = () => {
     </>
   );
 };
+
+export default NotAuthNav;

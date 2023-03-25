@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styles from '../Header.module.css';
 
-export const AuthNav = ({ handleUserSidebar, onClickLogout }) => {
+const AuthNav = ({ handleUserSidebar, onClickLogout }) => {
   return (
     <>
       <nav className={`${styles.header__nav}`}>
@@ -39,3 +39,5 @@ export const AuthNav = ({ handleUserSidebar, onClickLogout }) => {
     </>
   );
 };
+
+export default AuthNav;
