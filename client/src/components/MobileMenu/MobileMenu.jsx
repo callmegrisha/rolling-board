@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,7 +12,7 @@ import logo from '../../images/logo-second.svg';
 
 import styles from './MobileMenu.module.css';
 
-export const MobileMenu = ({ handleMobileMenu }) => {
+const MobileMenu = ({ handleMobileMenu }) => {
   const isAuth = useSelector(selectIsUserAuthenticated);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ export const MobileMenu = ({ handleMobileMenu }) => {
     window.localStorage.removeItem('token');
     navigate('/');
   };
+
   return (
     <div className={styles.menu}>
       <div className='menu__inner'>
@@ -35,7 +37,7 @@ export const MobileMenu = ({ handleMobileMenu }) => {
           />
         </div>
         <nav className='menu__nav'>
-          <ul className={`${styles.menu__list} list-reset`}>
+          <ul className={classNames(styles.menu__list, 'list-reset')}>
             {isAuth ? (
               <>
                 <li className={styles.menu__item}>
@@ -61,7 +63,7 @@ export const MobileMenu = ({ handleMobileMenu }) => {
         <div className={styles.menu__sign}>
           {isAuth ? (
             <Button
-              className={`${styles.menu__btn} btn btn--form`}
+              className={classNames(styles.menu__btn, 'btn', 'btn--form')}
               title='Link to sign up page'
               onClick={onClickLogout}
             >
@@ -70,14 +72,14 @@ export const MobileMenu = ({ handleMobileMenu }) => {
           ) : (
             <>
               <Link
-                className={`${styles.menu__btn} btn btn--form`}
+                className={classNames(styles.menu__btn, 'btn', 'btn--form')}
                 to='/login'
                 title='Link to login page'
               >
                 Login
               </Link>
               <Link
-                className={`${styles.menu__btn} btn btn--form`}
+                className={classNames(styles.menu__btn, 'btn', 'btn--form')}
                 to='/register'
                 title='Link to sign up page'
               >
@@ -90,3 +92,5 @@ export const MobileMenu = ({ handleMobileMenu }) => {
     </div>
   );
 };
+
+export default MobileMenu;

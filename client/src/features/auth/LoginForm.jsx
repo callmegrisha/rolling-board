@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
 import { Button } from '../../UI/Button';
@@ -13,7 +14,7 @@ export const LoginForm = () => {
   return (
     <FormWrap className='auth__form' title='Log in to your account'>
       <form className='form' onSubmit={handleSubmit(handleSubmitLoginForm)}>
-        <Label className='label form__item' title='Login'>
+        <Label className={classNames('label', 'form__item')} title='Login'>
           <Input
             className='input'
             type='text'
@@ -26,7 +27,7 @@ export const LoginForm = () => {
             <Notify message={errors.login?.message} />
           )}
         </Label>
-        <Label className='label form__item' title='Password'>
+        <Label className={classNames('form__item', 'label')} title='Password'>
           <Input
             className='input'
             type='password'
@@ -39,10 +40,13 @@ export const LoginForm = () => {
             <Notify message={errors.password?.message} />
           )}
         </Label>
-        <p className='form__sign'>
+        <p className={classNames('form__sign')}>
           Don't have an account? <Link to='/register'>Sign up</Link>
         </p>
-        <Button className='form__btn btn btn--form' type='submit'>
+        <Button
+          className={classNames('form__btn', 'btn', 'btn--form')}
+          type='submit'
+        >
           Login
         </Button>
       </form>

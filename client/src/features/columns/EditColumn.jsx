@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import { Button } from '../../UI/Button';
 import { Label } from '../../UI/Label';
 import { Input } from '../../UI/Input';
@@ -10,7 +12,7 @@ export const EditColumn = ({ columnId, toggle, name, project }) => {
 
   return (
     <form className='form' onSubmit={handleSubmit(handleSubmitEditColumn)}>
-      <Label className='label form__item' title='Name'>
+      <Label className={classNames('label', 'form__item')} title='Name'>
         <Input
           className='input'
           type='text'
@@ -23,8 +25,11 @@ export const EditColumn = ({ columnId, toggle, name, project }) => {
           <Notify message={errors.name?.message} />
         )}
       </Label>
-      <div className='form__nav nav-btn'>
-        <Button className='nav-btn__item btn btn--form' type='submit'>
+      <div className={classNames('form__nav', 'nav-btn')}>
+        <Button
+          className={classNames('nav-btn__item', 'btn', 'btn--form')}
+          type='submit'
+        >
           Save
         </Button>
       </div>

@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { lazy, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -45,12 +46,14 @@ export const Column = ({
     return (
       <>
         <div
-          className={`${styles['t-col']} ${styles['t-col--empty']} ${
-            className && className
-          }`}
+          className={classNames(
+            styles['t-col'],
+            styles['t-col--empty'],
+            className || ''
+          )}
         >
           <BoardButton
-            className='board-btn btn-reset'
+            className={classNames('board-btn', 'btn-reset')}
             onClick={toggle}
             type='button'
           >
@@ -66,7 +69,7 @@ export const Column = ({
 
   return (
     <>
-      <div className={`${styles['t-col']} ${className && className}`}>
+      <div className={classNames(styles['t-col'], className || '')}>
         <div className={styles['t-col__top']}>
           <span
             className={styles['t-col__title']}
@@ -76,7 +79,7 @@ export const Column = ({
           </span>
           {isCreator && (
             <DeleteButton
-              className={`${styles['t-col__delete']}`}
+              className={styles['t-col__delete']}
               onClick={handleDeleteColumn}
             />
           )}
@@ -85,7 +88,7 @@ export const Column = ({
           <Droppable droppableId={_id}>
             {(provided) => (
               <ul
-                className={`${styles['t-col__list']} list-reset`}
+                className={classNames(styles['t-col__list'], 'list-reset')}
                 ref={provided.innerRef}
                 {...provided.droppableProps}
               >
@@ -116,7 +119,7 @@ export const Column = ({
         </div>
         <div className={styles['t-col__bottom']}>
           <BoardButton
-            className={[styles['t-col__add']]}
+            className={styles['t-col__add']}
             type='button'
             onClick={toggleCreateTask}
           >

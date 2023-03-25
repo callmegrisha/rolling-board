@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import { Button } from '../../UI/Button';
 import { Input } from '../../UI/Input';
 import { Label } from '../../UI/Label';
@@ -49,8 +51,11 @@ export const EditProfile = ({ toggleEdit }) => {
           <Notify message={errors.email?.message} />
         )}
       </Label>
-      <div className='form__nav nav-btn'>
-        <Button className='nav-btn__item btn btn--form' type='submit'>
+      <div className={classNames('form__nav', 'nav-btn')}>
+        <Button
+          className={classNames('nav-btn__item', 'btn', 'btn--form')}
+          type='submit'
+        >
           Save
         </Button>
       </div>

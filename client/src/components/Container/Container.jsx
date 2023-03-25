@@ -1,10 +1,9 @@
+import classNames from 'classnames';
 import styles from './Container.module.css';
 
 export const Container = ({ className, children }) => {
   return (
-    <div
-      className={[styles.container, `${className ? className : ''}`].join(' ')}
-    >
+    <div className={classNames(styles.container, className || '')}>
       {children}
     </div>
   );

@@ -9,6 +9,7 @@ import { selectProfileInfo } from '../../features/profile/profileSlice';
 import { EditProfile } from './EditProfile';
 import { useUploadAvatar } from './useUploadAvatar';
 import styles from './Profile.module.css';
+import classNames from 'classnames';
 
 const Modal = lazy(() => import('../../components/Modal'));
 
@@ -40,16 +41,25 @@ export const Profile = () => {
             <span className={styles['user-profile__id']}>ID: {_id}</span>
           </div>
         </div>
-        <div className='user-profile__nav nav-btn'>
+        <div className={classNames('user-profile__nav', 'nav-btn')}>
           <Button
-            className='user-profile__btn nav-btn__item btn btn--form'
+            className={classNames(
+              'user-profile__btn',
+              'nav-btn__item',
+              'btn',
+              'btn--form'
+            )}
             onClick={toggleEdit}
           >
             edit profile
           </Button>
           {!avatarUrl ? (
             <div
-              className={`${styles['upload-file']} user-profile__btn nav-btn__item`}
+              className={classNames(
+                styles['upload-file'],
+                'user-profile__btn',
+                'nav-btn__item'
+              )}
             >
               <input
                 ref={inputFileRef}
@@ -58,7 +68,7 @@ export const Profile = () => {
                 onChange={handleChangeAvatar}
               />
               <Button
-                className='nav-btn__item btn btn--form'
+                className={classNames('nav-btn__item', 'btn', 'btn--form')}
                 type='button'
                 onClick={() => inputFileRef.current.click()}
               >
@@ -67,10 +77,14 @@ export const Profile = () => {
             </div>
           ) : (
             <div
-              className={`${styles['upload-file']} user-profile__btn nav-btn__item`}
+              className={classNames(
+                styles['upload-file'],
+                'user-profile__btn',
+                'nav-btn__item'
+              )}
             >
               <Button
-                className='nav-btn__item btn btn--form'
+                className={classNames('nav-btn__item', 'btn', 'btn--form')}
                 type='button'
                 onClick={handleSubmitAvatar}
               >

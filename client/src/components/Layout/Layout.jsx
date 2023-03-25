@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
 import { Header } from '../Header';
 import { Footer } from '../Footer';
-import { UserSidebar } from '../UserSidebar';
-import { MobileMenu } from '../MobileMenu';
 import { loadCurrentUser } from '../../features/auth/authSlice';
 import { loadProfileInfo } from '../../features/profile/profileSlice';
+import { BasicSuspense } from '../BasicSuspense';
+const MobileMenu = lazy(() => import('../MobileMenu'));
+const UserSidebar = lazy(() => import('../UserSidebar'));
 
 export const Layout = () => {
   const [userSidebar, setUserSidebar] = useState(false);
@@ -42,8 +43,16 @@ export const Layout = () => {
         <Outlet />
       </main>
       <Footer />
-      {mobileMenu && <MobileMenu handleMobileMenu={handleMobileMenu} />}
-      {userSidebar && <UserSidebar handleUserSidebar={handleUserSidebar} />}
+      {mobileMenu && (
+        <BasicSuspense
+          component={<MobileMenu handleMobileMenu={handleMobileMenu} />}
+        />
+      )}
+      {userSidebar && (
+        <BasicSuspense
+          component={<UserSidebar handleUserSidebar={handleUserSidebar} />}
+        />
+      )}
     </>
   );
 };

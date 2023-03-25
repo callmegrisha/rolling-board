@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { lazy, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -33,20 +34,20 @@ export const Project = ({ _id, name, description, team }) => {
         <p className={styles.project__description}>{description}</p>
         <nav className={styles.project__nav}>
           <Link
-            className={`${styles.project__btn} btn btn--form`}
+            className={classNames(styles.project__btn, 'btn', 'btn--form')}
             to={`/projects/${_id}`}
           >
             open board
           </Link>
           <Button
-            className={`${styles.project__btn} btn btn--form`}
+            className={classNames(styles.project__btn, 'btn', 'btn--form')}
             type='button'
             onClick={() => handleEditForm(_id, name, description, team)}
           >
             edit
           </Button>
           <Button
-            className={`${styles.project__btn} btn btn--form`}
+            className={classNames(styles.project__btn, 'btn', 'btn--form')}
             type='button'
             onClick={handleDeleteProject}
           >

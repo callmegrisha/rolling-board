@@ -2,6 +2,7 @@ import { lazy } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import classNames from 'classnames';
 
 import { BasicSuspense } from '../BasicSuspense';
 import {
@@ -46,9 +47,11 @@ export const Header = ({ handleUserSidebar, handleMobileMenu, mobileMenu }) => {
             <BasicSuspense component={<NotAuthNav />} />
           )}
           <button
-            className={`${styles.header__burger} burger-btn ${
+            className={classNames(
+              styles.header__burger,
+              'burger-btn',
               mobileMenu && 'burger-btn--active'
-            }`}
+            )}
             type='button'
             aria-label='Button for toggle mobile menu'
             onClick={handleMobileMenu}

@@ -11,7 +11,7 @@ export const Input = ({
 }) => {
   return (
     <input
-      className={className}
+      className={className || ''}
       type={type}
       placeholder={placeholder}
       {...register(label, validation)}

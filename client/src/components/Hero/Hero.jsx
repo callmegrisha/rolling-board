@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
 import { Container } from '../Container';
@@ -8,7 +9,7 @@ export const Hero = () => {
     <section className={styles.hero}>
       <Container className={styles.hero__container}>
         <span className={styles.hero__subtitle}>Project Management App</span>
-        <h1 className={`${styles.hero__title} main-title`}>
+        <h1 className={classNames(styles.hero__title, 'main-title')}>
           Colaborate and build faster, together.
         </h1>
         <p className={styles.hero__description}>
@@ -16,7 +17,7 @@ export const Hero = () => {
           <br />
           boards for rapid development.
         </p>
-        <Link className='btn btn--filled' to='/login'>
+        <Link className={classNames('btn', 'btn--filled')} to='/login'>
           Create Kanban Board
         </Link>
       </Container>

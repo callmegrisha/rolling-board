@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 
 import { Button } from '../../UI/Button';
@@ -12,11 +13,14 @@ export const RegisterForm = () => {
     useRegister();
 
   return (
-    <FormWrap className='auth__form' title='Sign up'>
-      <form className='form' onSubmit={handleSubmit(handleSubmitRegisterForm)}>
-        <Label className='label form__item' title='Name'>
+    <FormWrap className={classNames('auth__form')} title='Sign up'>
+      <form
+        className={classNames('form')}
+        onSubmit={handleSubmit(handleSubmitRegisterForm)}
+      >
+        <Label className={classNames('form__item', 'label')} title='Name'>
           <Input
-            className='input'
+            className={classNames('input')}
             type='text'
             placeholder='Name'
             label='name'
@@ -27,9 +31,9 @@ export const RegisterForm = () => {
             <Notify message={errors.name?.message} />
           )}
         </Label>
-        <Label className='label form__item' title='Login'>
+        <Label className={classNames('form__item', 'label')} title='Login'>
           <Input
-            className='input'
+            className={classNames('input')}
             type='text'
             placeholder='Login'
             label='login'
@@ -40,9 +44,9 @@ export const RegisterForm = () => {
             <Notify message={errors.login?.message} />
           )}
         </Label>
-        <Label className='label form__item' title='Email'>
+        <Label className={classNames('form__item', 'label')} title='Email'>
           <Input
-            className='input'
+            className={classNames('input')}
             type='email'
             placeholder='Email'
             label='email'
@@ -53,9 +57,9 @@ export const RegisterForm = () => {
             <Notify message={errors.email?.message} />
           )}
         </Label>
-        <Label className='label form__item' title='Password'>
+        <Label className={classNames('form__item', 'label')} title='Password'>
           <Input
-            className='input'
+            className={classNames('input')}
             type='password'
             placeholder='Password'
             label='password'
@@ -66,10 +70,13 @@ export const RegisterForm = () => {
             <Notify message={errors.password?.message} />
           )}
         </Label>
-        <p className='form__sign'>
+        <p className={classNames('form__sign')}>
           Already have an account? <Link to='/login'>Sign in</Link>
         </p>
-        <Button className='form__btn btn btn--form' type='submit'>
+        <Button
+          className={classNames('form__btn', 'btn', 'btn--form')}
+          type='submit'
+        >
           Create an Account
         </Button>
       </form>

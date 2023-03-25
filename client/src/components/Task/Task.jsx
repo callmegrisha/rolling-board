@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { useState, lazy } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -26,7 +27,7 @@ export const Task = ({ className, ...task }) => {
 
   return (
     <>
-      <div className={`${styles.task} ${className ? styles[className] : ''}`}>
+      <div className={classNames(styles.task, styles[className] || '')}>
         <div
           className={styles.task__content}
           onClick={() => handleEditForm({ ...task })}
@@ -38,7 +39,7 @@ export const Task = ({ className, ...task }) => {
         </div>
         {assignedUserOrCreator && (
           <DeleteButton
-            className={`${styles.task__delete}`}
+            className={styles.task__delete}
             onClick={handleDeleteTask}
           />
         )}

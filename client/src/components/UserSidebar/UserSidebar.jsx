@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -12,7 +13,7 @@ import {
 
 import styles from './UserSidebar.module.css';
 
-export const UserSidebar = ({ handleUserSidebar }) => {
+const UserSidebar = ({ handleUserSidebar }) => {
   const dispatch = useDispatch();
   const projects = useSelector(selectProjects);
   const tasks = useSelector(selectAllTasksByCurrentUser);
@@ -28,7 +29,7 @@ export const UserSidebar = ({ handleUserSidebar }) => {
         onClick={() => handleUserSidebar(false)}
       />
       <div className='user-sidebar__wrapper'>
-        <div className={styles['user-sidebar__header']}></div>
+        <div className={styles['user-sidebar__header']} />
         <div className={styles['user-sidebar__inner']}>
           <div className={styles['user-sidebar__profile']}>
             <Profile />
@@ -38,11 +39,15 @@ export const UserSidebar = ({ handleUserSidebar }) => {
             {tasks.length !== 0 ? (
               <>
                 <input
-                  className={`${styles['user-sidebar__search']} input input--search`}
+                  className={classNames(
+                    styles['user-sidebar__search'],
+                    'input',
+                    'input--search'
+                  )}
                   type='text'
                   placeholder='Search Task...'
                 />
-                <ul className='user-sidebar__list list-reset'>
+                <ul className={classNames('user-sidebar__list', 'list-reset')}>
                   {projects.map((project) => (
                     <li className='user-sidebar__item' key={project._id}>
                       <Accordion projectId={project._id} title={project.name} />
@@ -61,3 +66,5 @@ export const UserSidebar = ({ handleUserSidebar }) => {
     </div>
   );
 };
+
+export default UserSidebar;

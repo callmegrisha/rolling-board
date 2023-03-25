@@ -1,5 +1,7 @@
+import classNames from 'classnames';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+
 import { selectAllTasksByCurrentUser } from '../../features/tasks/tasksSlice';
 import { Task } from '../Task';
 import styles from './Accordion.module.css';
@@ -10,9 +12,10 @@ export const Accordion = ({ projectId, title = 'unknown' }) => {
 
   return (
     <div
-      className={`${styles.accordion} ${
+      className={classNames(
+        styles.accordion,
         isActive && styles['accordion--active']
-      }`}
+      )}
     >
       <button
         className={styles.accordion__header}
