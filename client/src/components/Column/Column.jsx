@@ -1,21 +1,22 @@
-import { useEffect, useState } from 'react';
+import { lazy, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 
-import { Modal } from '../../components/Modal';
 import { Task } from '../Task';
 import { NewColumn } from '../../features/columns/NewColumn';
 import { EditColumn } from '../../features/columns/EditColumn';
-import { NewTask } from '../../features/tasks/NewTask';
-
-import { BoardButton } from '../../UI/BoardButton';
-import { useModal } from '../../hooks/useModal';
 import { useDeleteColumn } from '../../features/columns/useDeleteColumn';
 import { selectCurrentUser } from '../../features/auth/authSlice';
+import { NewTask } from '../../features/tasks/NewTask';
+import { useModal } from '../../hooks/useModal';
+
+import { DeleteButton } from '../../UI/DeleteButton';
+import { BoardButton } from '../../UI/BoardButton';
+import { BasicSuspense } from '../BasicSuspense';
 
 import styles from './Column.module.css';
-import { DeleteButton } from '../../UI/DeleteButton';
+const Modal = lazy(() => import('../../components/Modal'));
 
 export const Column = ({
   className,
@@ -123,25 +124,33 @@ export const Column = ({
           </BoardButton>
         </div>
       </div>
-      <Modal
-        isShowing={isShowingEditColumn}
-        hide={toggleEditColumn}
-        title='Edit Column'
-      >
-        <EditColumn
-          toggle={toggleEditColumn}
-          columnId={_id}
-          name={name}
-          project={project}
-        />
-      </Modal>
-      <Modal
-        isShowing={isShowingCreateTask}
-        hide={toggleCreateTask}
-        title='Create Task'
-      >
-        <NewTask projectId={id} columnId={_id} toggle={toggleCreateTask} />
-      </Modal>
+      <BasicSuspense
+        component={
+          <Modal
+            isShowing={isShowingEditColumn}
+            hide={toggleEditColumn}
+            title='Edit Column'
+          >
+            <EditColumn
+              toggle={toggleEditColumn}
+              columnId={_id}
+              name={name}
+              project={project}
+            />
+          </Modal>
+        }
+      />
+      <BasicSuspense
+        component={
+          <Modal
+            isShowing={isShowingCreateTask}
+            hide={toggleCreateTask}
+            title='Create Task'
+          >
+            <NewTask projectId={id} columnId={_id} toggle={toggleCreateTask} />
+          </Modal>
+        }
+      />
     </>
   );
 };

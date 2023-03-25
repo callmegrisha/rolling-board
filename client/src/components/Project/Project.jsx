@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import { lazy, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Modal } from '../Modal';
+import { BasicSuspense } from '../BasicSuspense';
 import { Button } from '../../UI/Button';
 import { EditProject } from '../../features/projects/EditProject';
 import { useModal } from '../../hooks/useModal';
 import { useDeleteProject } from '../../features/projects/useDeleteProject';
 
 import styles from './Project.module.css';
+const Modal = lazy(() => import('../Modal'));
 
 export const Project = ({ _id, name, description, team }) => {
   const [projectInfo, setProjectInfo] = useState({});
@@ -53,9 +54,13 @@ export const Project = ({ _id, name, description, team }) => {
           </Button>
         </nav>
       </article>
-      <Modal isShowing={isShowing} hide={toggle} title='Edit Project'>
-        <EditProject projectInfo={projectInfo} />
-      </Modal>
+      <BasicSuspense
+        component={
+          <Modal isShowing={isShowing} hide={toggle} title='Edit Project'>
+            <EditProject projectInfo={projectInfo} />
+          </Modal>
+        }
+      />
     </>
   );
 };

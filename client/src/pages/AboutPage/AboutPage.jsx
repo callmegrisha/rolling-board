@@ -1,7 +1,7 @@
 import { Container } from '../../components/Container';
 import styles from './AboutPage.module.css';
 
-export const AboutPage = () => {
+const AboutPage = () => {
   return (
     <section className={styles['about-project']}>
       <Container className={styles['about-project__container']}>
@@ -61,3 +61,5 @@ export const AboutPage = () => {
     </section>
   );
 };
+
+export default AboutPage;

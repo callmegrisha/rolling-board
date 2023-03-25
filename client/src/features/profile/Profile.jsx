@@ -1,6 +1,7 @@
+import { lazy } from 'react';
 import { useSelector } from 'react-redux';
 
-import { Modal } from '../../components/Modal';
+import { BasicSuspense } from '../../components/BasicSuspense';
 import { Button } from '../../UI/Button';
 import { useModal } from '../../hooks/useModal';
 import { NewProject } from '../../features/projects/NewProject';
@@ -8,6 +9,8 @@ import { selectProfileInfo } from '../../features/profile/profileSlice';
 import { EditProfile } from './EditProfile';
 import { useUploadAvatar } from './useUploadAvatar';
 import styles from './Profile.module.css';
+
+const Modal = lazy(() => import('../../components/Modal'));
 
 export const Profile = () => {
   const [isShowing, toggle] = useModal();
@@ -84,12 +87,24 @@ export const Profile = () => {
           </Button>
         </div>
       </div>
-      <Modal isShowing={isShowing} hide={toggle} title='Create Project'>
-        <NewProject toggle={toggle} />
-      </Modal>
-      <Modal isShowing={isShowingEdit} hide={toggleEdit} title='Edit Profile'>
-        <EditProfile toggleEdit={toggleEdit} />
-      </Modal>
+      <BasicSuspense
+        component={
+          <Modal isShowing={isShowing} hide={toggle} title='Create Project'>
+            <NewProject toggle={toggle} />
+          </Modal>
+        }
+      />
+      <BasicSuspense
+        component={
+          <Modal
+            isShowing={isShowingEdit}
+            hide={toggleEdit}
+            title='Edit Profile'
+          >
+            <EditProfile toggleEdit={toggleEdit} />
+          </Modal>
+        }
+      />
     </>
   );
 };

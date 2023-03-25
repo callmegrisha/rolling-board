@@ -9,7 +9,7 @@ import advantageSvgThird from '../../images/advantage-3.svg';
 
 import styles from './HomePage.module.css';
 
-export const HomePage = () => {
+const HomePage = () => {
   return (
     <>
       <Hero />
@@ -90,3 +90,5 @@ export const HomePage = () => {
     </>
   );
 };
+
+export default HomePage;

@@ -3,7 +3,7 @@ import { FormWrap } from '../FormWrap';
 import { DeleteButton } from '../../UI/DeleteButton';
 import styles from './Modal.module.css';
 
-export const Modal = ({ title, children, isShowing, hide }) => {
+const Modal = ({ title, children, isShowing, hide }) => {
   return isShowing
     ? ReactDOM.createPortal(
         <div className={styles.modal} onClick={hide}>
@@ -19,3 +19,5 @@ export const Modal = ({ title, children, isShowing, hide }) => {
       )
     : null;
 };
+
+export default Modal;

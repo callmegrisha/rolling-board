@@ -12,7 +12,7 @@ import { ColumnsList } from '../../features/columns/ColumnsList';
 
 import styles from './ProjectPage.module.css';
 
-export const ProjectPage = () => {
+const ProjectPage = () => {
   const projectInfoLoading = useSelector(selectProjectsLoading);
   const [projectInfo, setProjectInfo] = useState({});
   const dispatch = useDispatch();
@@ -50,3 +50,5 @@ export const ProjectPage = () => {
     </>
   );
 };
+
+export default ProjectPage;

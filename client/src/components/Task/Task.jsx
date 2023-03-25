@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useState, lazy } from 'react';
 import { useSelector } from 'react-redux';
 
-import { Modal } from '../Modal';
 import { DeleteButton } from '../../UI/DeleteButton';
 import { EditTask } from '../../features/tasks/EditTask';
 import { useModal } from '../../hooks/useModal';
 import { useDeleteTask } from '../../features/tasks/useDeleteTask';
 import { selectCurrentUser } from '../../features/auth/authSlice';
-
+import { BasicSuspense } from '../BasicSuspense';
 import styles from './Task.module.css';
+
+const Modal = lazy(() => import('../Modal'));
 
 export const Task = ({ className, ...task }) => {
   const currentUser = useSelector(selectCurrentUser);
@@ -42,14 +43,17 @@ export const Task = ({ className, ...task }) => {
           />
         )}
       </div>
-
-      <Modal
-        isShowing={isShowingEditTask}
-        hide={toggleEditTask}
-        title='Edit Task'
-      >
-        <EditTask taskInfo={taskInfo} toggle={toggleEditTask} />
-      </Modal>
+      <BasicSuspense
+        component={
+          <Modal
+            isShowing={isShowingEditTask}
+            hide={toggleEditTask}
+            title='Edit Task'
+          >
+            <EditTask taskInfo={taskInfo} toggle={toggleEditTask} />
+          </Modal>
+        }
+      />
     </>
   );
 };

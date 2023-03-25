@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 import styles from './NotFound.module.css';
 
-export const NotFoundPage = () => {
+const NotFoundPage = () => {
   return (
     <>
       <section className={styles['not-found']}>
@@ -24,3 +24,5 @@ export const NotFoundPage = () => {
     </>
   );
 };
+
+export default NotFoundPage;

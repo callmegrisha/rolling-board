@@ -7,7 +7,7 @@ import { ProjectsList } from '../../features/projects/ProjectsList';
 import { Container } from '../../components/Container';
 import styles from './ProjectsPage.module.css';
 
-export const ProjectsPage = () => {
+const ProjectsPage = () => {
   const [search, setSearch] = useState('');
   const projects = useSelector(selectProjects);
 
@@ -38,3 +38,5 @@ export const ProjectsPage = () => {
     </>
   );
 };
+
+export default ProjectsPage;

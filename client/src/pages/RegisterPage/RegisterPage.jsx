@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
 import { Container } from '../../components/Container';
 import { InfoBlock } from '../../components/InfoBlock';
 import { selectIsUserAuthenticated } from '../../features/auth/authSlice';
-import { LoginForm } from '../../features/auth/LoginForm';
+import { RegisterForm } from '../../features/auth/RegisterForm';
 
-export const LoginPage = () => {
+const RegisterPage = () => {
   const isAuth = useSelector(selectIsUserAuthenticated);
   const navigate = useNavigate();
 
@@ -25,11 +25,13 @@ export const LoginPage = () => {
             subtitle='Project Management App'
             title='Everything you need in one place'
             description='Manage your boards using Drag-n-Drop, create adittional boards and
-            tasks.'
+          tasks.'
           />
-          <LoginForm />
+          <RegisterForm />
         </Container>
       </section>
     </>
   );
 };
+
+export default RegisterPage;
